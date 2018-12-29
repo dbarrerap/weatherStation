@@ -57,7 +57,7 @@ function loadDataChart(chart, type, label, dataLabel, dataData) {
         chartData['options']['scales']['yAxes'][0]['ticks'] = {
             suggestedMin: 25,
             suggestedMax: 35
-        }
+        };
     } else if (chart == 'pressChart') {
         var red = 'rgb(201, 31, 55)'
         chartData['data']['datasets'][0]['backgroundColor'] = red;
@@ -69,12 +69,13 @@ function loadDataChart(chart, type, label, dataLabel, dataData) {
         chartData['options']['scales']['yAxes'][0]['ticks'] = {
             suggestedMin: 25,
             suggestedMax: 75
-        }
+        };
     }
     var chart = new Chart(ctx, chartData);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Get today for input
     let d = new Date();
     let today = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate()
     document.querySelector('input[type="date"]').value = today;
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#newData").onsubmit = () => {
         let name = 'climate-' + document.querySelector('input[type="date"]').value + '.json';
-        console.log("Loading: " + name);
+        # console.log("Loading: " + name);
         loadJSON(name, function(response){
             // Data from JSON file
             let jsonData = JSON.parse(response);
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
             datasetTemp = [];
             datasetPress = [];
             datasetHumid = [];
+            // Load data for every 30 minutes (48 marks for charts)
             for (let i = 0; i < jsonData['readings'].length; i += 30) {
                 datasetTemp[i] = jsonData['readings'][i]['temperature'];
                 datasetPress[i] = jsonData['readings'][i]['pressure'];
@@ -110,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadDataChart('tempChart', 'line', 'Temperature', datasetLabels, datasetTemp);
             loadDataChart('pressChart', 'line', 'Pressure', datasetLabels, datasetPress);
             loadDataChart('humidChart', 'line', 'Humidity', datasetLabels, datasetHumid);
-            
             // Add data to table
             jsonData['readings'].forEach(element => {
                 const t = document.querySelector('#myData');
