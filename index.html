@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Station Data Reader</title>
+    <script src="script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="#" class="navbar-brand">Weather Station Data Reader</a>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form id="newData" class="form-inline my-2">
+                    <div class="input-group mr-sm-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">climate-</div>
+                        </div>
+                        <input type="date" name="datefile" id="filename" class="form-control">
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="basic-addon2">.json</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Load Data</button>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <div id="temp">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div id="pressure">
+                    <canvas id="pressChart"></canvas>
+                </div>
+            </div>
+            <div class="col-md">
+                <div id="humidity">
+                    <canvas id="humidChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Pressure</th>
+                    </tr>
+                </thead>
+                <tbody id="myData">
+                </tbody>
+            </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> 
+</body>
+</html>
