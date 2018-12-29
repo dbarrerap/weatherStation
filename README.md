@@ -1,4 +1,4 @@
-# weatherStation
+# Weather Station
 
 ## Components
 
